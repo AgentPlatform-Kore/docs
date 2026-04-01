@@ -43,6 +43,7 @@ The Platform now supports additional AI models, including:
 * Anthropic: claude-sonnet-4-6
 * Grok Realtime (Available via custom integration)
 
+[Learn more :octicons-arrow-right-24:](../models/supported-models.md)
 
 ## v1.7.0 March 8, 2026
 
