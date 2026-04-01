@@ -15,7 +15,7 @@ Airtable combines the functionality of a spreadsheet and a database, making it a
   <tr>
    <td>Supported Content Type
    </td>
-   <td>Tables
+   <td>Tables (Records)
    </td>
   </tr>
   <tr>
@@ -86,4 +86,15 @@ There are some other optional fields that are used to map the Airtable content t
 
 ## RACL Support
 
-For all the content ingested from Airtable, the access is controlled by the **tableId** field of the table to which the content belongs. This field is available in the `sys_racl` field as a permission entity. Use the permission entity APIs to associate users to this permission entity so that they can access the related content. 
+Search AI supports permission-aware search for Airtable content when RACL is enabled. Airtable implements base-level access control — all records within a base inherit the same base-level permissions, and no granular record-level permissions are available.
+
+The `sys_racl` field is set to the `base_id` of the base to which the record belongs, serving as the permission entity for access control.
+
+For example:
+```json
+"sys_racl": [
+    "appXXXXXXXXXXXXXX"    // base_id of the Airtable base
+]
+```
+
+Since Airtable does not support automatic permission sync, use the Permission Entity APIs to associate users with the `base_id` permission entity so they can access the related content.
